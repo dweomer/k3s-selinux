@@ -1,5 +1,6 @@
-ARG TUMBLEWEED=opensuse/tumbleweed
+ARG TUMBLEWEED=opensuse/tumbleweed@sha256:0aecc6219df43c7c21f752f68a08ec26b9f65473e100f6e82fa28a773d4925de
 FROM ${TUMBLEWEED}
+RUN zypper addlock glibc # https://github.com/moby/moby/issues/42680
 RUN zypper install -y container-selinux git rpm-build selinux-policy-devel
 
 ENV DAPPER_SOURCE /source
